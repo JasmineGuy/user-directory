@@ -4,7 +4,7 @@ import data from '../data'
 
 const CardContainer = () => {
     const [users, setUsers] = useState([]);
-    const [id, setId] = useState();
+    const [selectedIndex, setSelectedIndex] = useState();
     const [selected, setSelected] = useState();
     const [length, setLength] = useState();
     const [pending, setPending] = useState(false);
@@ -18,22 +18,21 @@ const CardContainer = () => {
             setUsers(data)
             setSelected(data[0])
             setLength(data.length)
-            setId(data[0].id)
+            // setId(data[0].id)
             setPending(false)
+            setSelectedIndex(0)
         }, 1000)
     },[])
 
-    console.log('users:',users)
-
     useEffect(()=> {
-        if(id ===1){
+        if(selectedIndex ===0){
             setPrevDisabled(true)
         } else {
             if(prevDisabled){
                 setPrevDisabled(false)
             }
         }
-        if(id ===length){
+        if(selectedIndex ===length -1){
             setNextDisabled(true)
         } else{
             if(nextDisabled){
@@ -41,36 +40,39 @@ const CardContainer = () => {
             }
         }
 
-    },[id, length,prevDisabled, nextDisabled])
+    },[selectedIndex, length, prevDisabled, nextDisabled])
 
 
     const findPrev = () => {
-            setId(id - 1);
-            setSelected(users.find(user => user.id === id-1))
-            setLength(users.length)
-
+            const foundIndex = users.findIndex((user => user.id === selected.id))
+            // console.log('foundIndex', foundIndex)
+            setSelected(users[foundIndex -1])
+            // setLength(users.length)
+            setSelectedIndex(selectedIndex -1)
     }
 
     const findNext = () => {
-        setId(id + 1);
-        setSelected(users.find(user => user.id === id+1))
-        setLength(users.length)
+        // setId(id + 1);
+        // setSelected(users.find(user => user.id === id+1))
+        // setLength(users.length)
+        const foundIndex = users.findIndex((user)=> user.id === selected.id)
+        setSelected(users[foundIndex + 1])
+        setSelectedIndex(selectedIndex +1)
     }
 
     const deleteUser =() => {
         let usersCopy =[...users]
-        console.log('users-before', usersCopy)
         let index = usersCopy.findIndex((user)=> user.id ===selected.id)
-        console.log('index:', index)
         usersCopy.splice(index, 1)
-        console.log('users-after',usersCopy)
         setUsers(usersCopy)
-        
+        setLength(usersCopy.length)
+        setSelected(users[index -1])
+        setSelectedIndex(selectedIndex -1)
     }
     return (
         <div className="card-container">
         
-            <Card pending={pending} id={id} selected={selected} length={length}/>
+            <Card selectedIndex={selectedIndex} pending={pending} selected={selected} length={length}/>
             <div className="button-container">
                 <button className="side-buttons" disabled={prevDisabled} onClick={findPrev}>Previous</button>
                 <section>

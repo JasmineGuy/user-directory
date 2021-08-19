@@ -1,7 +1,7 @@
 import React from 'react'
-import ContentLoader, { Facebook } from 'react-content-loader'
+import ContentLoader from 'react-content-loader'
 
-const Card = ({id, selected, length, pending}) => {
+const Card = ({id, selected, length, pending, selectedIndex}) => {
     console.log('selected:', selected)
     return (
         <div className="card">
@@ -11,7 +11,7 @@ const Card = ({id, selected, length, pending}) => {
                 :
             <>
                 <div className="top">
-                    <h1>{id}/{length}</h1>
+                    <h1>{selectedIndex + 1}/{length}</h1>
                 </div>
                 <div className="title">
                     <p>{selected.name.first} {selected.name.last}</p>
