@@ -43,7 +43,20 @@
   border: none;
   /* border: 1px solid red; */
 }
-
+section {
+  display: flex;
+  margin: 0.5rem;
+}
+.crud-buttons {
+  height: 55px;
+  width: 70px;
+  background-color: #33a6da;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  margin: 0.25rem;
+}
 .card {
   display: flex;
   flex-direction: column;
