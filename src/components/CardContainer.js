@@ -18,7 +18,6 @@ const CardContainer = () => {
             setUsers(data)
             setSelected(data[0])
             setLength(data.length)
-            // setId(data[0].id)
             setPending(false)
             setSelectedIndex(0)
         }, 1000)
@@ -45,16 +44,11 @@ const CardContainer = () => {
 
     const findPrev = () => {
             const foundIndex = users.findIndex((user => user.id === selected.id))
-            // console.log('foundIndex', foundIndex)
             setSelected(users[foundIndex -1])
-            // setLength(users.length)
             setSelectedIndex(selectedIndex -1)
     }
 
     const findNext = () => {
-        // setId(id + 1);
-        // setSelected(users.find(user => user.id === id+1))
-        // setLength(users.length)
         const foundIndex = users.findIndex((user)=> user.id === selected.id)
         setSelected(users[foundIndex + 1])
         setSelectedIndex(selectedIndex +1)
