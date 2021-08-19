@@ -64,6 +64,7 @@ const CardContainer = () => {
         setSelectedIndex(selectedIndex -1)
     }
     return (
+
         <div className="card-container">
         
             <Card selectedIndex={selectedIndex} pending={pending} selected={selected} length={length}/>
