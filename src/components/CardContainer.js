@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Card from './Card'
+import AddUser from './AddUser'
 import data from '../data'
 
 const CardContainer = () => {
@@ -11,6 +12,7 @@ const CardContainer = () => {
 
     const [prevDisabled, setPrevDisabled] = useState(false);
     const [nextDisabled, setNextDisabled] = useState(false);
+    const [isAdd, setIsAdd] = useState(false)
 
     useEffect(()=> {
         setPending(true);
@@ -41,6 +43,14 @@ const CardContainer = () => {
 
     },[selectedIndex, length, prevDisabled, nextDisabled])
 
+    const handleAdd = () => {
+        setIsAdd(true)
+    }
+
+    const addUser = (value) => {
+        console.log('USER OBJE: ', value)
+        // add new user to copy of state array
+    }
 
     const findPrev = () => {
             const foundIndex = users.findIndex((user => user.id === selected.id))
@@ -73,11 +83,19 @@ const CardContainer = () => {
                 <section>
                     <button className="crud-buttons">Edit</button>
                     <button className="crud-buttons" onClick={deleteUser}>Delete</button>
-                    <button className="crud-buttons">New</button>
+                    <button className="crud-buttons" onClick={handleAdd}>New</button>
                 </section>
 
                 <button className="side-buttons" disabled={nextDisabled} onClick={findNext}>Next</button>
             </div>
+
+            {
+                isAdd
+                ?
+                <AddUser addUser={addUser}/>
+                // "hello"
+                : null
+            }
         </div>
     )
 }

@@ -105,3 +105,44 @@ section {
   margin-left: 2rem;
   /* border: 1px solid red; */
 }
+.add-user-form {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+  padding: 1rem;
+  align-items: center;
+  background-color: #33a6da;
+}
+.add-user-form input {
+  border-radius: 5px;
+  height: 20px;
+  width: 200px;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+.add-user-form .personal-info {
+  /* border: 1px solid red; */
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.add-user-form .employment-info {
+  /* border: 1px solid red; */
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.add-user-form .favorite-movies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  /* border: 1px solid red; */
+}
+.add-user-form button {
+  background-color: #ebebeb;
+  height: 5vh;
+  border-radius: 15%;
+}
